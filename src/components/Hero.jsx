@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
 import React from "react";
+import Spline from "@splinetool/react-spline";
 
 const Hero = () => {
   return (
@@ -23,6 +23,12 @@ const Hero = () => {
             <br className="sm:block hidden" />
             and web applications
           </p>
+          <div className="lg:absolute flex lg:right-0 lg:bottom-0 w-full lg:w-auto h-full max-w-[737px] max-h-[678px] xl:bottom-0 xl:right-[8%] pt-5 -ml-10">
+            <Spline
+              className="translate-z-0 w-full h-full"
+              scene="https://prod.spline.design/jZInE765alu0SpiI/scene.splinecode"
+            />
+          </div>
         </div>
       </div>
     </section>

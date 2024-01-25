@@ -12,6 +12,7 @@ import {
   StarsCanvas,
 } from "./components";
 import Cover from "./components/Cover";
+import Spline from "@splinetool/react-spline";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,7 @@ function App() {
           <Navbar />
           <Hero />
         </div>
-        <About />
+        {/* <About />
         <Experience />
         <Tech />
         <Works />
@@ -29,7 +30,7 @@ function App() {
         <div className="relative z-0">
           <Contact />
           <StarsCanvas />
-        </div>
+        </div> */}
       </div>
     </BrowserRouter>
   );
