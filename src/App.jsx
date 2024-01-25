@@ -1,5 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
-
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   About,
   Contact,
@@ -8,32 +14,37 @@ import {
   Hero,
   Navbar,
   Tech,
-  Works,
   StarsCanvas,
 } from "./components";
-import Cover from "./components/Cover";
-import Spline from "@splinetool/react-spline";
+import Transition from "./components/Transition";
+
 function App() {
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-primary mb-20 xl:mb-0">
-        <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-          <Cover />
-          <Navbar />
-          <Hero />
-        </div>
-        {/* <About />
-        <Experience />
-        <Tech />
-        <Works />
-        <Feedbacks />
-        <div className="relative z-0">
-          <Contact />
-          <StarsCanvas />
-        </div> */}
-      </div>
-    </BrowserRouter>
+    <Router>
+      <RouteComponent />
+    </Router>
   );
 }
 
 export default App;
+
+const RouteComponent = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div key={location.pathname} className="h-full">
+        <Transition />
+        <Navbar />
+        <Routes location={location}>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Tech />} />
+          <Route path="/feedbacks" element={<Feedbacks />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
